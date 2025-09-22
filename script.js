@@ -120,10 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const dateOutput = document.querySelector(".date001");
     const todayDay = days[d.getDay()];
-    // Get the CSS variable value for --Neutral700
-    const neutral700 = getComputedStyle(
-      document.documentElement
-    ).getPropertyValue("--Neutral700");
     if (todayDay === "Monday") {
       document.getElementById("mon").style.backgroundColor = 'var(--Neutral600)';
     } else if (todayDay === "Tuesday") {
@@ -289,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(`Hourly forecast for ${date}:`, daysMap[date]);
               });
               // Display in the UI
-              const hourlyForecast = document.querySelector(".hourlyforecast");
+              const hourlyForecast = document.querySelector(".hourly-forecast");
 
               if (hourlyForecast) {
                 hourlyForecast.innerHTML = "";
