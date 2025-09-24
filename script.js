@@ -4,44 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // Loading animation control
   function showLoading() {
     document.querySelector(".animation").style.display = "flex";
-    document.querySelector(".today>div:last-of-type").style.visibility =
-      "hidden";
-    document.querySelector(".today").style.backgroundColor =
-      "var(--Neutral800)";
-    document
-      .querySelectorAll(".result")
-      .forEach((el) => el.classList.add("loading"));
-    document
-      .querySelectorAll(".dash")
-      .forEach((el) => el.classList.add("loading"));
-    document
-      .querySelectorAll(".days")
-      .forEach((el) => el.classList.add("loading"));
-    document
-      .querySelectorAll(".hour-item")
-      .forEach((el) => el.classList.add("loading"));
+    document.querySelector(".today>div:last-of-type").style.visibility ="hidden";
+    document.querySelector(".today").style.backgroundColor ="var(--Neutral800)";
+    document.querySelectorAll(".result").forEach((el) => el.classList.add("loading"));
+    document.querySelectorAll(".dash").forEach((el) => el.classList.add("loading"));
+    document.querySelectorAll(".days").forEach((el) => el.classList.add("loading"));
+    document.querySelectorAll(".hour-item").forEach((el) => el.classList.add("loading"));
   }
   function hideLoading() {
     document.querySelector(".animation").style.display = "none";
-    document.querySelector(".today>div:last-of-type").style.visibility =
-      "visible";
+    document.querySelector(".today>div:last-of-type").style.visibility ="visible";
     document.querySelector(".today").style.backgroundColor = "transparent";
-    document
-      .querySelectorAll("days")
-      .forEach((el) => el.classList.remove("loading"));
-    document.querySelectorAll(".result").forEach((el) => {
-      el.classList.remove("loading");
-    });
-    document
-      .querySelectorAll(".dash")
-      .forEach((el) => el.classList.remove("loading"));
-    document
-      .querySelectorAll(".days")
-      .forEach((el) => el.classList.remove("loading"));
+    document.querySelectorAll("days").forEach((el) => el.classList.remove("loading"));
+    document.querySelectorAll(".result").forEach((el) => {el.classList.remove("loading");});
+    document.querySelectorAll(".dash").forEach((el) => el.classList.remove("loading"));
+    document.querySelectorAll(".days").forEach((el) => el.classList.remove("loading"));
     suggestionBox.style.display = "none";
-    document
-      .querySelectorAll(".hour-item")
-      .forEach((el) => el.classList.remove("loading"));
+    document.querySelectorAll(".hour-item").forEach((el) => el.classList.remove("loading"));
   }
   const unitBtn = document.querySelector(".unit-btn");
   unitBtn.addEventListener("click", () => {
@@ -78,33 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   displayLocalTime(Intl.DateTimeFormat().resolvedOptions().timeZone);
-  // Example usage: displayLocalTime(Intl.DateTimeFormat().resolvedOptions().timeZone);
-  // You can call this after loading or after fetching weather data for a specific city/timezone.
   // Today's date
   function getFormattedDate(d) {
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
+    const months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec",];
     let dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const todayIndex = d.getDay();
     // Output the next 7 days, starting from today
@@ -112,12 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 7; i++) {
       weekDayNames.push(dayNames[(todayIndex + i) % 7]);
     }
-    // Output to elements with class .day-name, assuming you have 7 of them in your HTML
+    // Output to elements with class .day-name
     const dayOutputs = document.querySelectorAll(".day-name");
     const dayOutputs2 = document.querySelectorAll(".hourly-date");
     dayOutputs2.forEach((el, idx) => {
       el.textContent = days[(todayIndex + idx) % 7];
     });
+
+    // To check the hourly temperature for the next seven days
     const dateOutput = document.querySelector(".date001");
     const todayDay = days[d.getDay()];
     if (todayDay === "Monday") {
@@ -155,10 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const today = new Date();
-  const dateString = getFormattedDate(today); // Formatted date string
+  const dateString = getFormattedDate(today);
+   // Formatted date string
   const dateOutput = document.querySelector(".full-date");
   dateOutput.textContent = `${dateString}`;
-
+  // Search button 
   const button = document.querySelector("button");
   button.addEventListener("click", () => {
     suggestionBox.style.display = "block";
@@ -185,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     try {
       // Call OWM Geocoding API
-      const API_KEY = "a34e48205c544af80edf9a5ab98449b2"; // Use your actual API key
+      const API_KEY = "a34e48205c544af80edf9a5ab98449b2"; 
       const response = await fetch(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
       );
@@ -482,7 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // media queries
+  // media queries 
   const image = document.querySelector(".loading img");
   if (window.matchMedia("(max-width: 600px)").matches) {
     image.src = "./assets/images/bg-today-small.svg";

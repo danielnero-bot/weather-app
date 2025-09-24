@@ -267,7 +267,7 @@ button:hover {
 .flexbox {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
 }
 .details {
@@ -298,7 +298,7 @@ button:hover {
   font-size: 6.5rem;
   color: var(--Neutral0);
   position: absolute;
-  left: 190%;
+  left: 168%;
   top: -55%;
 }
 .temperature > img {
@@ -441,8 +441,10 @@ dropdown-bar:hover {
 .hourly-forecast {
   overflow: scroll;
   scroll-behavior: smooth;
-  max-height: 560px;
+  max-height: 434px;
 }
+
+/* Scrollbar for Hourly forecast */
 ul::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -589,4 +591,15 @@ ul::-webkit-scrollbar-corner {
   flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
+}
+
+.hourlyforecast {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  flex-direction: row;
+}
+.hourlyforecast > li {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
 }

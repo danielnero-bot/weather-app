@@ -1,224 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/9a10c0dd4d.js" crossorigin="anonymous"></script>
   <title>Frontend Mentor | Weather app</title>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <nav>
-        <img src="./assets/images/logo.svg" alt="Logo">
-        <div class="unit-btn">
-          <img src="./assets/images/icon-units.svg" alt="">
-          Units
-          <img src="./assets/images/icon-dropdown.svg" alt="">
-          <div class="dropdown">
-            <div class="dropdown-content">
-              <div class="switch-btn">Switch to
-                <span class="imperial-btn">Imperial</span>
-                <span class="metric-btn">Metric</span>
-              </div>
-              
-              <!-- <div id="" class="switch">Temperature</div> -->
-              
-              <span class="imperial flex">Celsius (°C)
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
-              <span class="metric flex">Fahrenheit (°F)
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
-              
-              <div class="switch">Wind Speed</div>
-              
-              <span class="imperial flex">km/h
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
-              <span class="metric flex">mph
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
-              
-              <div class="switch">Precipitation</div>
-              
-              <span class="imperial flex">Millimeters (mm)
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
-              <span class="metric flex">Inches (in)
-                <img src="./assets/images/icon-checkmark.svg" alt="">
-              </span>
+  <header>
+    <nav>
+      <img src="./assets/images/logo.svg" alt="Logo">
+      <div class="unit-btn">
+        <img src="./assets/images/icon-units.svg" alt="">
+        Units
+        <img src="./assets/images/icon-dropdown.svg" alt="">
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="switch-btn">Switch to
+              <span class="imperial-btn">Imperial</span>
+              <span class="metric-btn">Metric</span>
             </div>
+            <!-- <div id="" class="switch">Temperature</div> -->
+            <span class="imperial flex">Celsius (°C)
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
+            <span class="metric flex">Fahrenheit (°F)
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
+
+            <div class="switch">Wind Speed</div>
+
+            <span class="imperial flex">km/h
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
+            <span class="metric flex">mph
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
+
+            <div class="switch">Precipitation</div>
+
+            <span class="imperial flex">Millimeters (mm)
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
+            <span class="metric flex">Inches (in)
+              <img src="./assets/images/icon-checkmark.svg" alt="">
+            </span>
           </div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <div class="banner">
-        How's the sky looking today?
-      </div>
-      <div class="search-bar">
-        <div class="box">
-          <div class="box">
-            <div class="input">
-              <label for="text">
-                <img src="./assets/images/icon-search.svg" alt="">
-              </label>
-              <input id="text" type="text" placeholder="Search for a city">
-            </div>
-          </div>
-          <button type="button">Search</button>
-        </div>
-        <div class="suggestion">
-          <ul>
-          </ul>
         </div>
       </div>
-      <div class="flexbox">
-        <div class="section">
-          <div class="today">
-            <div class="animation">
-              <i class="fa-solid fa-circle"></i>
-              <i class="fa-solid fa-circle"></i>
-              <i class="fa-solid fa-circle"></i>
-              <div class="content">
-                Loading...</div>
-            </div>
-            <div class="loading">
-              <img src="./assets/images/bg-today-large.svg" alt="">
-              <div class="overlay">
-                <div class="location">Berlin, Germany</div>
-                <div class="date">
-                  <div class="full-date"></div>
-                </div>
-                <div class="temperature">
-                  <img src="./assets/images/icon-snow.webp" alt="">
-                  <span id="temperature" class="value"> </span>° <!--Insert temperature here -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="details">
-            <div class="detail">
-              <div class="label">Feels like</div>
-              <div class="result"><span id="temperature" class="value"></span> °<!-- Insert temperature here --></div><span
-                class="dash">-</span>
-            </div>
-            <div class="detail">
-              <div class="label">Humidity</div>
-              <div class="result"><span id="humidity" class="value"></span> %<!-- Insert humidity here --></div><span
-                class="dash">-</span>
-            </div>
-            <div class="detail">
-              <div class="label">Wind</div>
-              <div class="result"><span id="wind" class="value"></span>km/h<!-- Insert wind here --></div><span
-                class="dash">-</span>
-            </div>
-            <div class="detail">
-              <div class="label">Precipitation</div>
-              <div class="result"><span id="precipitation" class="value"></span> mm<!-- Insert precipitation here --></div>
-              <span class="dash">-</span>
-            </div>
-          </div>
-      
-          <div class="weekly">
-            <div>Daily forecast</div>
-            <ul class="weekly-forecast">
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-              <li class="days">
-                <div class="day-name"></div>
-                <img src="" alt="">
-                <div class="flex">
-                  <div class="max-temperature"></div>
-                  <div class="min-temperature"></div>
-                </div>
-              </li>
-            </ul>
-            <!-- Insert daily forecast for the next 7 days here -->
-          </div>
-      
-        </div>
-        <div class="section2">
-          <div class="flex">
-            <div>Hourly forecast</div>
-            <details>
-              <summary class="dropdown-bar"><span class="date001">date</span>
-                <img class="custom-icon" src="./assets/images/icon-dropdown.svg" alt="">
-              </summary>
-              <div class="hourly-dropdown-content">
-                <span id="mon" class="days hourly-date"></span>
-                <span id="tue"class="days hourly-date"></span>
-                <span id="wed"class="days hourly-date"></span>
-                <span id="thur" class="days hourly-date"></span>
-                <span id="fri"class="days hourly-date"></span>
-                <span id="sat"class="days hourly-date"></span>
-                <span id="sun"class="days hourly-date"></span>
-              </div>
-            </details>
-          </div>
-          <ul class="hourly-forecast">
-      
-          </ul>
-          <!-- Insert hourly forecast for the selected day here -->
-        </div>
-      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="banner">
+      How's the sky looking today?
+    </div>
+    <div class="search-bar">
       <div class="box">
-        <p class="error no-result">No search result found!</p>
+        <div class="box">
+          <div class="input">
+            <label for="text">
+              <img src="./assets/images/icon-search.svg" alt="">
+            </label>
+            <input id="text" type="text" placeholder="Search for a city">
+          </div>
+        </div>
+        <button type="button">Search</button>
       </div>
-    </main>
+      <div class="suggestion">
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <div class="flexbox">
+      <div class="section">
+        <div class="today">
+          <div class="animation">
+            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-circle"></i>
+            <div class="content">
+              Loading...</div>
+          </div>
+          <div class="loading">
+            <img src="./assets/images/bg-today-large.svg" alt="">
+            <div class="overlay">
+              <div class="location">Berlin, Germany</div>
+              <div class="date">
+                <div class="full-date"></div>
+              </div>
+              <div class="temperature">
+                <img src="./assets/images/icon-snow.webp" alt="">
+                <span id="temperature" class="value"> </span>° <!--Insert temperature here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="details">
+          <div class="detail">
+            <div class="label">Feels like</div>
+            <div class="result"><span id="temperature" class="value"></span> °<!-- Insert temperature here --></div>
+            <span class="dash">-</span>
+          </div>
+          <div class="detail">
+            <div class="label">Humidity</div>
+            <div class="result"><span id="humidity" class="value"></span> %<!-- Insert humidity here --></div><span
+              class="dash">-</span>
+          </div>
+          <div class="detail">
+            <div class="label">Wind</div>
+            <div class="result"><span id="wind" class="value"></span>km/h<!-- Insert wind here --></div><span
+              class="dash">-</span>
+          </div>
+          <div class="detail">
+            <div class="label">Precipitation</div>
+            <div class="result"><span id="precipitation" class="value"></span> mm<!-- Insert precipitation here -->
+            </div>
+            <span class="dash">-</span>
+          </div>
+        </div>
+
+        <div class="weekly">
+          <div>Daily forecast</div>
+          <ul class="weekly-forecast">
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+            <li class="days">
+              <div class="day-name"></div>
+              <img src="" alt="">
+              <div class="flex">
+                <div class="max-temperature"></div>
+                <div class="min-temperature"></div>
+              </div>
+            </li>
+          </ul>
+          <!-- Insert daily forecast for the next 7 days here -->
+        </div>
+
+      </div>
+      <div class="section2">
+        <div class="flex">
+          <div>Hourly forecast</div>
+          <details>
+            <summary class="dropdown-bar"><span class="date001">date</span>
+              <img class="custom-icon" src="./assets/images/icon-dropdown.svg" alt="">
+            </summary>
+            <div class="hourly-dropdown-content">
+              <span id="mon" class="days hourly-date"></span>
+              <span id="tue" class="days hourly-date"></span>
+              <span id="wed" class="days hourly-date"></span>
+              <span id="thur" class="days hourly-date"></span>
+              <span id="fri" class="days hourly-date"></span>
+              <span id="sat" class="days hourly-date"></span>
+              <span id="sun" class="days hourly-date"></span>
+            </div>
+          </details>
+        </div>
+        <ul class="hourly-forecast">
+
+        </ul>
+        <!-- Insert hourly forecast for the selected day here -->
+      </div>
+    </div>
+    <div class="box">
+      <p class="error no-result">No search result found!</p>
+    </div>
+  </main>
+  <div class="api-error">
+    
   </div>
   <script src="./script.js"></script>
 </body>
+
 </html>
