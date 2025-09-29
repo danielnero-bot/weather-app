@@ -1,7 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Add event listeners to each .days.hourly-date element to show hourly forecast for that day
-  document.querySelectorAll(".days.hourly-date").forEach((el) => {
-    el.addEventListener("click", function () {
+  document.querySelectorAll(".days.hourly-date").forEach((li) => {
+    li.addEventListener("click", function () {
+      // Remove active class from all buttons
+      document
+        .querySelectorAll(".days.hourly-date")
+        .forEach((li) => li.classList.remove("active"));
+      // Add active class to clicked button
+      li.classList.add("active");
+      // Close the <details> element if inside one
+      const details = li.closest("details");
+      if (details) details.open = false;
       // Get the day name from the element's text content
       const dayName = el.textContent.trim();
       // Find the date string for the selected day (from the next 7 days)
@@ -199,13 +208,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const dateOutput = document.querySelector(".date001");
     const todayDay = days[d.getDay()];
     const dayIds = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-    dayIds.forEach((id, idx) => {
+    // Remove current-day class from all
+    dayIds.forEach((id) => {
       const el = document.getElementById(id);
-      if (el) el.style.backgroundColor = "transparent";
+      if (el) el.classList.remove("current-day");
     });
+    // Add current-day class to today
     const todayId = dayIds[d.getDay()];
     const todayEl = document.getElementById(todayId);
-    if (todayEl) todayEl.style.backgroundColor = "var(--Neutral600)";
+    if (todayEl) todayEl.classList.add("current-day");
 
     dayOutputs.forEach((el, idx) => {
       el.textContent = weekDayNames[idx];

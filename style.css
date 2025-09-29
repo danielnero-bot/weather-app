@@ -1,9 +1,21 @@
+/* ==========================================================================
+   CSS RESET & GLOBAL STYLES
+   ========================================================================== */
+
+/* Reset all elements to remove default margins, padding, and use border-box sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ========================================================================== */
+
+/* Define color variables for consistent theming throughout the application */
 :root {
+  /* Neutral color scale */
   --Neutral900: hsl(243, 96%, 9%);
   --Neutral800: hsl(243, 27%, 20%);
   --Neutral700: hsl(243, 23%, 24%);
@@ -11,10 +23,18 @@
   --Neutral300: hsl(240, 6%, 70%);
   --Neutral200: hsl(250, 6%, 84%);
   --Neutral0: hsl(0, 0%, 100%);
+  
+  /* Accent colors */
   --Orange500: hsl(28, 100%, 52%);
   --Blue500: hsl(233, 67%, 56%);
   --Blue700: hsl(248, 70%, 36%);
 }
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+/* Global body styles - dark theme foundation */
 body {
   font-family: "DM Sans", sans-serif;
   background-color: var(--Neutral900);
@@ -22,11 +42,19 @@ body {
   padding: 2rem 4rem;
   transition: all 0.3s ease;
 }
+
+/* ==========================================================================
+   NAVIGATION & UNIT CONVERSION COMPONENT
+   ========================================================================== */
+
+/* Main navigation layout */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+/* Unit toggle button base styles */
 .unit-btn {
   background-color: var(--Neutral800);
   color: var(--Neutral0);
@@ -39,18 +67,26 @@ nav {
   align-items: center;
   gap: 0.5rem;
 }
+
+/* Show dropdown when unit button has 'unit' class */
 .unit-btn.unit {
   .dropdown-content {
     display: block;
   }
 }
+
+/* Hover state for navigation items */
 nav > div:hover {
   background-color: var(--Neutral700);
 }
+
+/* Dropdown container positioning */
 .dropdown {
   position: relative;
   display: block;
 }
+
+/* Dropdown content - hidden by default */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -65,18 +101,32 @@ nav > div:hover {
   width: 200px;
   padding: 12px;
 }
+
+/* ==========================================================================
+   UNIT SWITCHER STYLES
+   ========================================================================== */
+
+/* Unit switch container */
 .switch {
   display: block;
 }
+
+/* Individual unit buttons */
 .switch-btn {
   margin: 6px 0;
 }
+
+/* Metric button - initially hidden */
 .metric-btn {
   display: none;
 }
+
+/* Metric container */
 .metric {
   display: block;
 }
+
+/* Switch section styling */
 .switch {
   font-size: smaller;
   margin: 6px 0;
@@ -84,6 +134,8 @@ nav > div:hover {
   border-top: 1px solid var(--Neutral600);
   padding-top: 8px;
 }
+
+/* Flex layout for unit items */
 .flex {
   display: flex;
   align-items: center;
@@ -91,20 +143,29 @@ nav > div:hover {
   padding: 9px;
 }
 
+/* Metric container styling */
 .metric {
   border-radius: 0.375rem;
   padding-bottom: 12px;
 }
+
+/* Remove top border from temperature section */
 #temperature {
   border-top: none;
 }
+
+/* Imperial unit active state */
 .imperial {
   background-color: var(--Neutral600);
   border-radius: 0.375rem;
 }
+
+/* Hide checkmark icons by default */
 .metric > img {
   display: none;
 }
+
+/* Active metric state with checkmark */
 .metric.active {
   background-color: var(--Neutral600);
   margin-bottom: 6px;
@@ -112,12 +173,20 @@ nav > div:hover {
     display: inline;
   }
 }
+
+/* Active imperial state */
 .imperial.active {
   background-color: transparent;
   img {
     display: none;
   }
 }
+
+/* ==========================================================================
+   BANNER & SEARCH COMPONENTS
+   ========================================================================== */
+
+/* Main banner/header styling */
 .banner {
   color: var(--Neutral0);
   text-align: center;
@@ -127,10 +196,14 @@ nav > div:hover {
   font-weight: 500;
   font-family: "Bricolage Grotesque", sans-serif;
 }
+
+/* Search bar container */
 .search-bar {
   margin-bottom: 2rem;
   position: relative;
 }
+
+/* Search input box layout */
 .box {
   display: flex;
   justify-content: center;
@@ -138,6 +211,8 @@ nav > div:hover {
   align-items: center;
   position: relative;
 }
+
+/* Input field styling */
 .input {
   background-color: var(--Neutral700);
   display: flex;
@@ -150,6 +225,8 @@ nav > div:hover {
   width: 400px;
   font-size: 1rem;
 }
+
+/* Actual input element */
 .input > input {
   background-color: var(--Neutral700);
   border: none;
@@ -159,26 +236,33 @@ nav > div:hover {
   font-size: 1rem;
 }
 
+/* Search icon */
 .input > img {
   width: 10%;
   cursor: pointer;
 }
 
+/* Input focus state */
 .input:focus-within {
   outline: 2px solid var(--Neutral300);
 }
 
+/* Input hover state */
 .input:hover {
   background-color: var(--Neutral600);
   input {
     background-color: var(--Neutral600);
   }
 }
+
+/* Placeholder text styling */
 .input > input::placeholder {
   color: var(--Neutral300);
   font-size: 1rem;
   font-weight: 500;
 }
+
+/* Search button */
 button {
   background-color: var(--Blue500);
   border: none;
@@ -187,16 +271,31 @@ button {
   color: var(--Neutral0);
   font-size: 1.2rem;
 }
+
+/* Search button hover state */
 button:hover {
   background-color: var(--Blue700);
   cursor: pointer;
 }
+
+/* ==========================================================================
+   LAYOUT SECTIONS
+   ========================================================================== */
+
+/* Main content sections */
 .section {
   width: 50%;
 }
+
 .weekly {
   width: 100%;
 }
+
+/* ==========================================================================
+   SEARCH SUGGESTIONS
+   ========================================================================== */
+
+/* Search suggestion dropdown */
 .suggestion {
   display: none;
   position: absolute;
@@ -208,10 +307,13 @@ button:hover {
   margin-top: 0.7rem;
   padding: 0.5rem;
 }
+
+/* Remove default list styling */
 .suggestion > ul {
   list-style: none;
 }
 
+/* Individual suggestion items */
 .suggestion-item {
   display: block;
   list-style: none;
@@ -220,29 +322,44 @@ button:hover {
   border-radius: 0.375rem;
   padding: 0.5rem;
 }
+
+/* Suggestion hover state */
 .suggestion > ul > li:hover {
   background-color: var(--Neutral700);
   cursor: pointer;
 }
+
+/* Adjust flex alignment for suggestion items */
 .suggestion > ul > li.flex {
   justify-content: unset;
 }
+
+/* Loading state for search */
 .search-in-progress > img {
   margin-right: 10px;
 }
 
+/* Hide all suggestion items by default, show only last one */
 .suggestion > ul > li {
   display: none;
 }
 .suggestion > ul > li:last-of-type {
   display: flex;
 }
+
+/* ==========================================================================
+   CURRENT WEATHER DISPLAY
+   ========================================================================== */
+
+/* Location text */
 .location {
   font-size: 2rem;
   font-family: "DM Sans", sans-serif;
   color: var(--Neutral0);
   font-weight: 500;
 }
+
+/* Today's weather container */
 .today {
   position: relative;
   width: 100%;
@@ -252,24 +369,34 @@ button:hover {
   background-color: var(--Neutral800);
   border-radius: 0.675rem;
 }
+
+/* Loading animation for today's weather */
 .today > .loading > img {
   width: 100%;
 }
+
+/* Ensure last child is visible */
 .today > div:last-of-type {
   visibility: visible;
 }
+
+/* Temperature overlay positioning */
 .overlay {
   position: absolute;
   top: 40%;
   left: 2rem;
   z-index: 5;
 }
+
+/* Main content flex layout */
 .flexbox {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
 }
+
+/* Weather details grid */
 .details {
   width: 100%;
   display: grid;
@@ -277,22 +404,30 @@ button:hover {
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+/* Individual detail cards */
 .detail {
   background-color: var(--Neutral800);
   padding: 1rem;
   border-radius: 0.375rem;
   border: 1px solid var(--Neutral600);
 }
+
+/* Detail label text */
 .label {
   font-size: 0.875rem;
   color: var(--Neutral300);
 }
+
+/* Detail value text */
 .result {
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--Neutral0);
   margin-top: 0.8rem;
 }
+
+/* Large temperature display */
 .temperature {
   display: flex;
   font-size: 6.5rem;
@@ -301,10 +436,18 @@ button:hover {
   left: 168%;
   top: -55%;
 }
+
+/* Temperature icon */
 .temperature > img {
   width: 80%;
   margin-right: 1rem;
 }
+
+/* ==========================================================================
+   LOADING ANIMATIONS
+   ========================================================================== */
+
+/* Loading dots animation container */
 .animation {
   position: absolute;
   display: none;
@@ -322,6 +465,8 @@ button:hover {
     animation-delay: 0.6s;
   }
 }
+
+/* Bouncing animation keyframes */
 @keyframes bounce {
   0%,
   100% {
@@ -331,11 +476,19 @@ button:hover {
     transform: translateY(-10px);
   }
 }
+
+/* ==========================================================================
+   WEEKLY FORECAST
+   ========================================================================== */
+
+/* Weekly forecast container */
 .weekly-forecast {
   display: flex;
   gap: 0.7rem;
   width: 50%;
 }
+
+/* Individual day cards */
 .weekly-forecast .days {
   background-color: var(--Neutral800);
   border-radius: 0.375rem;
@@ -343,14 +496,20 @@ button:hover {
   text-align: center;
   list-style: none;
 }
+
+/* Weather icons in weekly forecast */
 .days > img {
   width: 80%;
   margin: 0.3rem 0;
   opacity: 1;
 }
+
+/* Full width for weekly forecast */
 .weekly-forecast {
   width: 100%;
 }
+
+/* Temperature ranges in weekly forecast */
 .flex > .min-temperature {
   color: var(--Neutral300);
   font-size: 1rem;
@@ -361,53 +520,83 @@ button:hover {
   font-size: 1.2rem;
   font-weight: 600;
 }
+
+/* ==========================================================================
+   HOURLY FORECAST & DETAILS
+   ========================================================================== */
+
+/* Loading dash animation */
 .dash {
   display: none;
   margin: 6px 0;
   font-size: xx-large;
 }
+
+/* Hourly forecast section */
 .section2 {
   width: 50%;
   background-color: var(--Neutral800);
   border-radius: 0.675rem;
   padding: 1rem;
 }
+
+/* Hourly forecast list */
 .hourly-forecast {
   width: 100%;
   list-style: none;
 }
+
+/* Hourly forecast icons */
 .hourlyforecastimg {
   width: 40px;
   margin-right: 0.5rem;
 }
+
+/* Individual hour items */
 .hour-item {
   padding: 0.5rem 0;
 }
+
+/* Details summary element */
 summary {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.api-error{
+/* ==========================================================================
+   ERROR STATES
+   ========================================================================== */
+
+/* API error message styling */
+.api-error {
   text-align: center;
   color: var(--Neutral0);
   display: none;
 }
-.api-error> h1{
+.api-error > h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-.api-error> p{
+.api-error > p {
   font-size: 1.2rem;
 }
 
-.api-error.loading{
+/* Show error when loading */
+.api-error.loading {
   display: block;
 }
+
+/* ==========================================================================
+   DROPDOWN COMPONENTS
+   ========================================================================== */
+
+/* Remove default details marker */
 summary::-webkit-details-marker {
   display: none;
 }
+
+/* Dropdown bar styling */
 .dropdown-bar {
   background-color: var(--Neutral700);
   color: var(--Neutral0);
@@ -418,16 +607,18 @@ summary::-webkit-details-marker {
   justify-content: space-between;
   align-items: center;
 }
+
+/* Dropdown bar hover - note: selector appears to have typo */
 dropdown-bar:hover {
   background-color: #2980b9;
 }
 
-/* Arrow icon */
+/* Dropdown arrow icon */
 .custom-icon {
   transition: transform 0.3s ease;
 }
 
-/* Dropdown content styling */
+/* Dropdown content area */
 .hourly-dropdown-content {
   padding: 6px;
   background-color: var(--Neutral700);
@@ -436,6 +627,8 @@ dropdown-bar:hover {
   position: absolute;
   /* width: 100%; */
 }
+
+/* Date selector in hourly forecast */
 .hourly-date {
   display: block;
   margin: 5px 0;
@@ -443,23 +636,31 @@ dropdown-bar:hover {
   padding: 5px;
 }
 
+/* Custom icon spacing */
 .custom-icon {
   margin: 0 8px;
   font-size: 1.2em;
 }
 
+/* No results error state */
 .error.no-result {
   color: var(--Neutral0);
   font-size: 2.2rem;
   display: none;
 }
+
+/* Scrollable hourly forecast */
 .hourly-forecast {
   overflow: scroll;
   scroll-behavior: smooth;
   max-height: 434px;
 }
 
-/* Scrollbar for Hourly forecast */
+/* ==========================================================================
+   SCROLLBAR STYLING
+   ========================================================================== */
+
+/* Custom scrollbar for hourly forecast */
 ul::-webkit-scrollbar {
   width: 4px;
   height: 4px;
@@ -478,15 +679,21 @@ ul::-webkit-scrollbar-corner {
   background: transparent;
 }
 
-/* LOADING STYLES */
+/* ==========================================================================
+   LOADING STATE STYLES
+   ========================================================================== */
 
+/* Show loading dash */
 .dash.loading {
   display: inline;
 }
 
+/* Hide results during loading */
 .result.loading {
   display: none;
 }
+
+/* Loading state for day cards */
 .days.loading {
   background-color: var(--Neutral700);
   color: transparent;
@@ -498,6 +705,8 @@ ul::-webkit-scrollbar-corner {
     color: transparent;
   }
 }
+
+/* Loading state for hour items */
 .hour-item.loading {
   position: relative;
   background-color: var(--Neutral700);
@@ -513,6 +722,11 @@ ul::-webkit-scrollbar-corner {
   color: transparent;
 }
 
+/* ==========================================================================
+   COMPONENT STATES & INTERACTIONS
+   ========================================================================== */
+
+/* Base hour item styling */
 .hour-item {
   background-color: var(--Neutral700);
   border-radius: 0.375rem;
@@ -521,22 +735,46 @@ ul::-webkit-scrollbar-corner {
   display: flex;
   align-items: center;
 }
+
+/* Hour label positioning */
 .hour {
   margin-right: auto;
 }
-.suggestion-item:first-of-type{
+
+/* Highlight first suggestion item */
+.suggestion-item:first-of-type {
   background-color: var(--Neutral600);
 }
 
-.section2 .flex{
+/* Section 2 flex layout */
+.section2 .flex {
   justify-content: space-between;
   align-items: center;
 }
 
+/* Current day highlighting */
+.days.hourly-date.current-day {
+  background-color: var(--Neutral600);
+  color: var(--Neutral0);
+}
+
+/* Active state for hourly date selector */
+.days.hourly-date.active {
+  background-color: var(--Blue500);
+  color: var(--Neutral0);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN - MOBILE STYLES
+   ========================================================================== */
+
 @media screen and (max-width: 600px) {
+  /* Adjust body padding for mobile */
   body {
     padding: 1rem;
   }
+  
+  /* Horizontal scrolling for hourly forecast on mobile */
   .hourlyforecast {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -547,10 +785,14 @@ ul::-webkit-scrollbar-corner {
     scroll-snap-align: start;
     flex: 0 0 auto;
   }
+  
+  /* Adjust banner size */
   .banner {
     font-size: 2.5rem;
     margin: 1.5rem 0;
   }
+  
+  /* Search bar adjustments */
   .search-bar {
     margin-bottom: 1.5rem;
   }
@@ -558,6 +800,8 @@ ul::-webkit-scrollbar-corner {
     flex-direction: column;
     align-items: stretch;
   }
+  
+  /* Reposition overlay elements */
   .overlay {
     left: 30%;
     top: 10%;
@@ -568,6 +812,8 @@ ul::-webkit-scrollbar-corner {
     position: relative;
     left: -15%;
   }
+  
+  /* Adjust temperature display positioning */
   .overlay > .temperature {
     position: relative;
     left: -36%;
@@ -581,20 +827,30 @@ ul::-webkit-scrollbar-corner {
       margin-right: 2rem;
     }
   }
+  
+  /* Full width input on mobile */
   .input {
     width: 100%;
   }
+  
+  /* Adjust suggestion dropdown positioning */
   .suggestion {
     left: 0;
     width: 100%;
     top: 2.8rem;
   }
+  
+  /* Full width sections on mobile */
   .section {
     width: 100%;
   }
+  
+  /* Adjust details grid */
   .details {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  /* Grid layout for weekly forecast on mobile */
   .weekly-forecast {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -604,25 +860,31 @@ ul::-webkit-scrollbar-corner {
   .weekly-forecast .days {
     width: 100%;
   }
+  
+  /* Stack sections vertically on mobile */
   .section2 {
     margin-top: 2rem;
     width: 100%;
   }
+  
+  /* Adjust temperature display */
   .temperature {
-    /* position: static; */
     font-size: 4.5rem;
     margin-top: 1rem;
     display: flex;
     align-items: center;
   }
+  
+  /* Weekly section heading */
   .weekly > div {
     margin: 1.5rem 0;
     font-size: 2rem;
     font-weight: 500;
   }
+  
+  /* Vertical flex layout on mobile */
   .flexbox {
     flex-direction: column;
     align-items: center;
   }
 }
-
