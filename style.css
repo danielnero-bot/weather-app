@@ -87,6 +87,7 @@ nav > div:hover {
 .flex {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 9px;
 }
 
@@ -522,6 +523,14 @@ ul::-webkit-scrollbar-corner {
 }
 .hour {
   margin-right: auto;
+}
+.suggestion-item:first-of-type{
+  background-color: var(--Neutral600);
+}
+
+.section2 .flex{
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {
