@@ -123,7 +123,7 @@ nav > div:hover {
   text-align: center;
   padding: 0.5rem;
   margin: 2.5rem 0;
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 500;
   font-family: "Bricolage Grotesque", sans-serif;
 }
@@ -332,8 +332,7 @@ button:hover {
   }
 }
 .weekly-forecast {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14.285%, 1fr));
+  display: flex;
   gap: 0.7rem;
   width: 50%;
 }
@@ -390,6 +389,22 @@ summary {
   cursor: pointer;
 }
 
+.api-error{
+  text-align: center;
+  color: var(--Neutral0);
+  display: none;
+}
+.api-error> h1{
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.api-error> p{
+  font-size: 1.2rem;
+}
+
+.api-error.loading{
+  display: block;
+}
 summary::-webkit-details-marker {
   display: none;
 }
@@ -435,7 +450,7 @@ dropdown-bar:hover {
 
 .error.no-result {
   color: var(--Neutral0);
-  font-size: 3.2rem;
+  font-size: 2.2rem;
   display: none;
 }
 .hourly-forecast {
@@ -455,7 +470,7 @@ ul::-webkit-scrollbar-track {
 }
 
 ul::-webkit-scrollbar-thumb {
-  background-color: #3498db;
+  background-color: inherit;
   border-radius: 4px;
   border: 1px solid #f0f0f0;
 }
@@ -514,6 +529,16 @@ ul::-webkit-scrollbar-corner {
   body {
     padding: 1rem;
   }
+  .hourlyforecast {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-direction: row;
+  }
+  .hourlyforecast > li {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
   .banner {
     font-size: 2.5rem;
     margin: 1.5rem 0;
@@ -558,7 +583,12 @@ ul::-webkit-scrollbar-corner {
   .section {
     width: 100%;
   }
+  .details {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .weekly-forecast {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     flex-direction: column;
     width: 100%;
   }
@@ -586,20 +616,4 @@ ul::-webkit-scrollbar-corner {
     align-items: center;
   }
 }
-.weekly-forecast {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-}
 
-.hourlyforecast {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  display: flex;
-  flex-direction: row;
-}
-.hourlyforecast > li {
-  scroll-snap-align: start;
-  flex: 0 0 auto;
-}

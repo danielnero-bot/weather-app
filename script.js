@@ -1,41 +1,83 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Show loading animation when page loads
   showLoading();
+  // Hide loading after 4 seconds (simulated loading time)
   setTimeout(hideLoading, 4000); // Simulate loading for 4 seconds
+
   // Loading animation control
   function showLoading() {
+    // Display loading animation container
     document.querySelector(".animation").style.display = "flex";
-    document.querySelector(".today>div:last-of-type").style.visibility ="hidden";
-    document.querySelector(".today").style.backgroundColor ="var(--Neutral800)";
-    document.querySelectorAll(".result").forEach((el) => el.classList.add("loading"));
-    document.querySelectorAll(".dash").forEach((el) => el.classList.add("loading"));
-    document.querySelectorAll(".days").forEach((el) => el.classList.add("loading"));
-    document.querySelectorAll(".hour-item").forEach((el) => el.classList.add("loading"));
+    // Hide content in today section
+    document.querySelector(".today>div:last-of-type").style.visibility =
+      "hidden";
+    // Change background color during loading
+    document.querySelector(".today").style.backgroundColor =
+      "var(--Neutral800)";
+    // Add loading class to various elements for styling
+    document
+      .querySelectorAll(".result")
+      .forEach((el) => el.classList.add("loading"));
+    document
+      .querySelectorAll(".dash")
+      .forEach((el) => el.classList.add("loading"));
+    document
+      .querySelectorAll(".days")
+      .forEach((el) => el.classList.add("loading"));
+    document
+      .querySelectorAll(".hour-item")
+      .forEach((el) => el.classList.add("loading"));
   }
+
   function hideLoading() {
+    // Hide loading animation container
     document.querySelector(".animation").style.display = "none";
-    document.querySelector(".today>div:last-of-type").style.visibility ="visible";
+    // Show content in today section
+    document.querySelector(".today>div:last-of-type").style.visibility =
+      "visible";
+    // Reset background color
     document.querySelector(".today").style.backgroundColor = "transparent";
-    document.querySelectorAll("days").forEach((el) => el.classList.remove("loading"));
-    document.querySelectorAll(".result").forEach((el) => {el.classList.remove("loading");});
-    document.querySelectorAll(".dash").forEach((el) => el.classList.remove("loading"));
-    document.querySelectorAll(".days").forEach((el) => el.classList.remove("loading"));
+    // Remove loading class from various elements
+    document
+      .querySelectorAll("days")
+      .forEach((el) => el.classList.remove("loading"));
+    document.querySelectorAll(".result").forEach((el) => {
+      el.classList.remove("loading");
+    });
+    document
+      .querySelectorAll(".dash")
+      .forEach((el) => el.classList.remove("loading"));
+    document
+      .querySelectorAll(".days")
+      .forEach((el) => el.classList.remove("loading"));
+    // Hide suggestion box
     suggestionBox.style.display = "none";
-    document.querySelectorAll(".hour-item").forEach((el) => el.classList.remove("loading"));
+    document
+      .querySelectorAll(".hour-item")
+      .forEach((el) => el.classList.remove("loading"));
   }
+
+  // Unit toggle button functionality
   const unitBtn = document.querySelector(".unit-btn");
   unitBtn.addEventListener("click", () => {
     unitBtn.classList.toggle("unit");
   });
+
+  // Temperature unit switch button (metric/imperial)
   const switchBtn = document.querySelector(".switch-btn");
   switchBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+    // Toggle between imperial and metric units
     const imperial = document.querySelectorAll(".imperial");
     const metric = document.querySelectorAll(".metric");
     imperial.forEach((el) => el.classList.toggle("active"));
     metric.forEach((el) => el.classList.toggle("active"));
   });
+
+  // Search input and suggestion box elements
   const inputField = document.querySelector(".input>input");
   const suggestionBox = document.querySelector(".suggestion");
+
   // Set default city to London on load
   fetchWeather("London");
 
@@ -56,18 +98,44 @@ document.addEventListener("DOMContentLoaded", () => {
       timeOutput.textContent = timeString;
     }
   }
+
+  // Display local time for user's current timezone
   displayLocalTime(Intl.DateTimeFormat().resolvedOptions().timeZone);
-  // Today's date
+
+  // Today's date formatting function
   function getFormattedDate(d) {
-    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",];
-    const months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sept","Oct","Nov","Dec",];
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     let dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const todayIndex = d.getDay();
+
     // Output the next 7 days, starting from today
     const weekDayNames = [];
     for (let i = 0; i < 7; i++) {
       weekDayNames.push(dayNames[(todayIndex + i) % 7]);
     }
+
     // Output to elements with class .day-name
     const dayOutputs = document.querySelectorAll(".day-name");
     const dayOutputs2 = document.querySelectorAll(".hourly-date");
@@ -75,28 +143,38 @@ document.addEventListener("DOMContentLoaded", () => {
       el.textContent = days[(todayIndex + idx) % 7];
     });
 
-    // To check the hourly temperature for the next seven days
+    // Highlight current day in weekly forecast
     const dateOutput = document.querySelector(".date001");
     const todayDay = days[d.getDay()];
     if (todayDay === "Monday") {
-      document.getElementById("mon").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("mon").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Tuesday") {
-      document.getElementById("tue").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("tue").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Wednesday") {
-      document.getElementById("wed").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("wed").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Thursday") {
-      document.getElementById("thu").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("thu").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Friday") {
-      document.getElementById("fri").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("fri").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Saturday") {
-      document.getElementById("sat").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("sat").style.backgroundColor =
+        "var(--Neutral600)";
     } else if (todayDay === "Sunday") {
-      document.getElementById("sun").style.backgroundColor = 'var(--Neutral600)';
+      document.getElementById("sun").style.backgroundColor =
+        "var(--Neutral600)";
     }
+
     dateOutput.textContent = `${todayDay}`;
     dayOutputs.forEach((el, idx) => {
       el.textContent = weekDayNames[idx];
     });
+
+    // Format date with proper suffix (st, nd, rd, th)
     const day = d.getDate();
     const suffix =
       day % 10 == 1 && day % 100 != 11
@@ -112,14 +190,17 @@ document.addEventListener("DOMContentLoaded", () => {
     } ${d.getFullYear()}`;
   }
 
+  // Display current date
   const today = new Date();
   const dateString = getFormattedDate(today);
-   // Formatted date string
+  // Formatted date string
   const dateOutput = document.querySelector(".full-date");
   dateOutput.textContent = `${dateString}`;
-  // Search button 
+
+  // Search button functionality
   const button = document.querySelector("button");
   button.addEventListener("click", () => {
+    // Show loading state in suggestion box
     suggestionBox.style.display = "block";
     suggestionBox.innerHTML = `
     <li class="search-in-progress flex">
@@ -127,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Search in progress</p>
             </li>
     `;
+    // Show loading animation
     showLoading();
     setTimeout(hideLoading, 4000);
     let city = inputField.value.trim();
@@ -143,8 +225,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     try {
-      // Call OWM Geocoding API
-      const API_KEY = "a34e48205c544af80edf9a5ab98449b2"; 
+      // Call OWM Geocoding API for city suggestions
+      const API_KEY = "a34e48205c544af80edf9a5ab98449b2";
       const response = await fetch(
         `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
       );
@@ -164,6 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       suggestionBox.innerHTML = "<li>Error fetching suggestions</li>";
     }
+    // Hide suggestions after 3 seconds
     setTimeout(() => {
       suggestionBox.style.display = "none";
     }, 3000);
@@ -180,10 +263,18 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((geoData) => {
         if (!geoData.length) {
           console.error("City not found");
+          console.error("Error fetching city coordinates:", error);
+          // Show error message if city not found
+          const flexBox = document.querySelector(".flexbox");
+          flexBox.remove();
+          const errorDiv = document.querySelector(".error.no-result");
+          errorDiv.style.display = "block";
+
           return;
         }
         const lat = geoData[0].lat;
         const lon = geoData[0].lon;
+
         // Step 2: Get forecast from Open-Meteo
         const openMeteoUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,windspeed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
         fetch(openMeteoUrl)
@@ -194,6 +285,8 @@ document.addEventListener("DOMContentLoaded", () => {
               const now = new Date();
               const todayStr = now.toISOString().slice(0, 10); // e.g. '2025-09-17'
               const hours = [];
+
+              // Filter hourly data for today's remaining hours
               for (let i = 0; i < data.hourly.time.length; i++) {
                 const timeISO = data.hourly.time[i];
                 if (timeISO.startsWith(todayStr)) {
@@ -216,6 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 }
               }
+
               // --- Log hourly forecast for the next 7 days, grouped by day ---
               const daysMap = {};
               for (let i = 0; i < data.hourly.time.length; i++) {
@@ -237,13 +331,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     : undefined,
                 });
               }
+
               // Get the next 7 days (including today)
               const allDates = Object.keys(daysMap).sort();
               const next7 = allDates.slice(0, 7);
               next7.forEach((date) => {
                 console.log(`Hourly forecast for ${date}:`, daysMap[date]);
               });
-              // Display in the UI
+
+              // Display hourly forecast in the UI
               const hourlyForecast = document.querySelector(".hourly-forecast");
 
               if (hourlyForecast) {
@@ -259,6 +355,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     hourObj.temp
                   )}°</span>`;
                   hourlyForecast.appendChild(li);
+
+                  // Set appropriate weather icon based on temperature
                   const img = li.querySelector(".hourlyforecastimg");
                   if (hourObj.temp > 25) {
                     img.src = "./assets/images/icon-sunny.webp";
@@ -272,6 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
               }
             }
+
             // --- Pull and log forecast for remaining hours of the day ---
             if (data.hourly && data.hourly.time && data.hourly.temperature_2m) {
               const now = new Date();
@@ -301,6 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
               }
               console.log("Remaining hourly forecast for today:", hours);
             }
+
             if (!data.daily) {
               console.error("No daily data in Open-Meteo response:", data);
               return;
@@ -309,10 +409,12 @@ document.addEventListener("DOMContentLoaded", () => {
             // Store each day's forecast in its own variable
             const maxTemps = data.daily.temperature_2m_max;
             const minTemps = data.daily.temperature_2m_min;
+
             // Display local time for the user's city using Open-Meteo timezone
             if (data.timezone) {
               displayLocalTime(data.timezone);
             }
+
             // Update all daily max temperature elements in the weekly forecast
             const maxTempElements = document.querySelectorAll(
               ".weeklyforecast .max, .weeklyforecast .max-temperarture"
@@ -322,7 +424,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.textContent = Math.round(maxTemps[i]) + "°";
               }
             });
-            // Optionally update min temps as well
+
+            // Update min temperatures in weekly forecast
             const minTempElements = document.querySelectorAll(
               ".weeklyforecast .min"
             );
@@ -331,6 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.textContent = Math.round(minTemps[i]) + "°";
               }
             });
+
             // Find the index in hourly.time closest to now
             let now = new Date();
             let bestIdx = 0;
@@ -344,12 +448,16 @@ document.addEventListener("DOMContentLoaded", () => {
                   bestIdx = i;
                 }
               }
+
               // Store each day's forecast in its own variable
               const maxTemps = data.daily.temperature_2m_max;
               const minTemps = data.daily.temperature_2m_min;
+
               // Log daily max and min temperatures
               console.log("Daily max temperatures:", maxTemps);
               console.log("Daily min temperatures:", minTemps);
+
+              // Update max temperature displays
               const maxTempElements =
                 document.querySelectorAll(".max-temperature");
               maxTempElements.forEach((el, i) => {
@@ -357,6 +465,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   el.textContent = Math.round(maxTemps[i]);
                 }
               });
+
+              // Update min temperature displays
               const minTempElements =
                 document.querySelectorAll(".min-temperature");
               minTempElements.forEach((el, i) => {
@@ -365,6 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
               });
             }
+
             // Get values closest to current hour
             let temp =
               data.hourly && data.hourly.temperature_2m
@@ -387,27 +498,31 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".location").textContent = `${
               geoData[0].name
             }${geoData[0].country ? ", " + geoData[0].country : ""}`;
+
             document.querySelectorAll("#temperature").forEach((el) => {
               if (temp !== null) el.textContent = Math.round(temp);
             });
-            // If you have elements for min temp, update them too
+
+            // Update min temperature display
             const minTempElement = document.getElementById("min-temperature");
             if (minTempElement)
               minTempElement.textContent = Math.round(minTemps[0]);
 
-            // Update UI if elements exist
+            // Update humidity, wind, and precipitation displays
             const humidityElement = document.getElementById("humidity");
             if (humidityElement && humidity !== null)
               humidityElement.textContent = humidity;
+
             const windElement = document.getElementById("wind");
             if (windElement && windSpeed !== null)
               windElement.textContent = windSpeed;
+
             const precipitationElement =
               document.getElementById("precipitation");
             if (precipitationElement && precipitation !== null)
               precipitationElement.textContent = precipitation;
 
-            // Optionally, update weather icon based on temperature or other logic
+            // Update weather icon based on temperature
             const bigImg = document.querySelector(".temperature>img");
             if (bigImg && temp !== null) {
               if (temp > 25) bigImg.src = "./assets/images/icon-sunny.webp";
@@ -417,6 +532,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 bigImg.src = "./assets/images/icon-overcast.webp";
               else bigImg.src = "./assets/images/icon-snow.webp";
             }
+
+            // Update weather icons for daily forecast
             const smallImgs = document.querySelectorAll(".days img");
             smallImgs.forEach((img) => {
               if (temp > 25) img.src = "./assets/images/icon-sunny.webp";
@@ -427,13 +544,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           })
           .catch((error) => {
-            console.error("Error fetching Open-Meteo forecast:", error);
-            const main = document.querySelector("main");
-            main.remove();
+            console.error("Error fetching city coordinates:", error);
+            // Show error message on API failure
+            const flexBox = document.querySelector(".flexbox");
+            flexBox.remove();
+            const errorDiv = document.querySelector(".error.no-result");
+            errorDiv.style.display = "block";
           });
       })
       .catch((error) => {
         console.error("Error fetching city coordinates:", error);
+        // Show error message on geocoding failure
         const flexBox = document.querySelector(".flexbox");
         flexBox.remove();
         const errorDiv = document.querySelector(".error.no-result");
@@ -441,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // media queries 
+  // Responsive image loading based on screen size
   const image = document.querySelector(".loading img");
   if (window.matchMedia("(max-width: 600px)").matches) {
     image.src = "./assets/images/bg-today-small.svg";
